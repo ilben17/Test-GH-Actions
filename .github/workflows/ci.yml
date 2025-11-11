@@ -2,19 +2,22 @@ name: Continuous Integration Workflow
 
 # This workflow is triggered whenever a new PR is created on the main branch
 on:
-  pull_request:
-    branches:
-      - develop
-      - feature/**
-    paths:
-      - "web/**"
+  workflow_dispatch:
   push:
     branches:
       - develop
       - feature/**
     paths:
       - "web/**"
-
+  pull_request:
+    branches:
+      - develop
+      - feature/**
+    paths:
+      - "web/**"
+permissions:
+  contents: write
+  pull-requests: write
 jobs:
   # Run unit tests to make sure everything is 👍
   test:
